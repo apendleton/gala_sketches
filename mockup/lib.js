@@ -15,6 +15,15 @@ var LOW = 0, HIGH = 1;
         }
     }
 
+    setLevel = function(row, col, level) {
+        var l = ((204 - 68) * level) + 68;
+        var h = l.toString(16);
+        var f = ["#", h, h, h].join("")
+        var light = document.querySelectorAll('.row-' + row + ' .col-' + col);
+        if (!light.length) console.log('.row-' + row + ' .col-' + col)
+        light[0].style.backgroundColor = f;
+    }
+
     setAllLow = function() { setAll(LOW); }
     setAllHigh = function() { setAll(HIGH); }
 
