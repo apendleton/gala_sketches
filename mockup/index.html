@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <script type="text/javascript" src="lib.js"></script>
+        <style type="text/css">
+            table, tr, td {
+                border-collapse: collapse;
+                border: 0;
+            }
+            td {
+                border: 1px solid #222222;
+                width: 25px;
+                height: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr class="row-0">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-1">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-2">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-3">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-4">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-5">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-6">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-7">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-8">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-9">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-10">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+            <tr class="row-11">
+                <td class="col-0"></td><td class="col-1"></td><td class="col-2"></td><td class="col-3"></td><td class="col-4"></td><td class="col-5"></td><td class="col-6"></td><td class="col-7"></td><td class="col-8"></td><td class="col-9"></td><td class="col-10"></td><td class="col-11"></td>
+            </tr>
+        </table>
+
+        <script type="text/javascript">
+            (function() {
+                setAllLow();
+                function parseQuery(qstr) {
+                    var query = {};
+                    var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
+                    for (var i = 0; i < a.length; i++) {
+                        var b = a[i].split('=');
+                        query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+                    }
+                    return query;
+                }
+                var qs = parseQuery(window.location.search);
+
+                if (qs.script) {
+                    var script = document.createElement('script');
+                    script.setAttribute('src', qs.script + ".js");
+                    document.head.appendChild(script);
+                }
+            })();
+        </script>
+    </body>
+</html>
