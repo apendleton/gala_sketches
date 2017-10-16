@@ -1,4 +1,4 @@
-var setLight, setLevel, setAllHigh, setAllLow, setRing, setRingQ, setRingGlobalQ, setRingL, setAllRings, setAllRingsLow, setAllRingsHigh, shuffle, parseQuery;
+var setLight, setLevel, setAll, setAllHigh, setAllLow, setRing, setRingQ, setRingGlobalQ, setRingL, setAllRings, setAllRingsLow, setAllRingsHigh, shuffle, parseQuery;
 var LOW = 0, HIGH = 1;
 
 (function() {
@@ -8,7 +8,7 @@ var LOW = 0, HIGH = 1;
         light[0].style.backgroundColor = state ? '#cccccc': '#444444';
     }
 
-    var setAll = function(state) {
+    setAll = function(state) {
         var lights = document.querySelectorAll('td');
         for (let light of lights) {
             light.style.backgroundColor = state ? '#cccccc': '#444444';

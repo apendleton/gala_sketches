@@ -8,7 +8,7 @@
     var min = 1000;
     var max = -1000;
     var MAX = .9;
-    var MIN = -.2;
+    var MIN = -.1;
     setInterval(function() {
         var c = direction == 1 ? current : 8 - current;
         for (var row = 0; row < 12; row++) {

@@ -1,5 +1,7 @@
 (function() {
-    setAllLow();
+    var qs = parseQuery(window.location.search);
+    var state = qs.invert ? LOW : HIGH;
+    setAll(!state);
 
     function switchToOctantZeroFrom(octant, x, y) {
         switch(octant) {
@@ -56,7 +58,7 @@
 
         for (var x = x0; (x0 <= x1 ? x <= x1 : x >= x1); x += (x0 > x1 ? -1 : 1)) {
             var rc = switchFromOctantZeroTo(octant, x, y);
-            if (rc[0] >= 0 && rc[0] < 12 && rc[1] >= 0 && rc[1] < 12) setLight(rc[0], rc[1], HIGH);
+            if (rc[0] >= 0 && rc[0] < 12 && rc[1] >= 0 && rc[1] < 12) setLight(rc[0], rc[1], state);
             if (D > 0) {
                 y = y + 1;
                 D = D - (2*dx);
@@ -68,7 +70,7 @@
     var i = 0;
     var entries = [0, 8, 16];
     setInterval(function() {
-        setAllLow();
+        setAll(!state);
         for (var j = 0; j < 3; j++) {
             var pos = (entries[j] + i) % 23;
             var row, col;

@@ -63,7 +63,7 @@
 
         for (var r = 0; r < 12; r++) {
             for (var c = 0; c < 12; c++) {
-                var level = 1 - dist(r, c, row, col);
+                var level = dist(r, c, row, col);
                 setLevel(r, c, level);
             }
         }

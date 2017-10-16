@@ -50,5 +50,5 @@
         if (currentHeight < 12) setLight(currentHeight, currentCol, HIGH);
         if (currentHeight > 0) setLight(currentHeight - 1, currentCol, LOW);
         currentHeight += 1;
-    }, 10);
+    }, 25);
 })();
