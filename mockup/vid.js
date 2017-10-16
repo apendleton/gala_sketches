@@ -1,6 +1,7 @@
 (function() {
     var qs = parseQuery(window.location.search);
     let vid = qs.vid ? qs.vid + ".json" : "blue.json"
+    let ifr = qs.ifr ? parseInt(qs.ifr, 10) : 100;
     fetch(vid).then(function(response) {
         return response.json();
     }).then(function(frames) {
@@ -15,6 +16,6 @@
                 }
             }
             current = (current + 1) % frames.length;
-        }, 250);
+        }, ifr);
     })
 })();
