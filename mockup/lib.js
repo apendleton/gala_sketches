@@ -16,7 +16,7 @@ var LOW = 0, HIGH = 1;
     }
 
     setLevel = function(row, col, level) {
-        var l = ((204 - 68) * level) + 68;
+        var l = Math.floor((204 - 68) * level) + 68;
         var h = l.toString(16);
         var f = ["#", h, h, h].join("")
         var light = document.querySelectorAll('.row-' + row + ' .col-' + col);
