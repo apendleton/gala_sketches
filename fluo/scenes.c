@@ -74,7 +74,7 @@ void snake(uint16_t duration) {
             count++;
         }
 
-        uint8_t pick = _random(count);
+        uint8_t pick = random(count);
         uint8_t tailRow = bodyRows[TAIL];
         uint8_t tailCol = bodyCols[TAIL];
         for (uint8_t i = 0; i < LENGTH - 1; i++) {
@@ -167,7 +167,7 @@ void drops(uint16_t duration) {
             }
 
 
-            pick = _random(activeCount);
+            pick = random(activeCount);
             currentCol = active[pick];
 
             if (direction == 1) {
