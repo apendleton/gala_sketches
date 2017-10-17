@@ -3,7 +3,7 @@
 
     var n = 12;
     var dist_cache = new Array((n+1)*n/2);
-    var max = Math.sqrt(Math.pow(10, 2) + Math.pow(10, 2));
+    var max = Math.sqrt(Math.pow(11, 2) + Math.pow(11, 2));
     for (var i = 0; i <= 11; i++) {
         for (var j = 0; j <= i; j++) {
             var offset = i*(i+1)/2+j;

@@ -22,7 +22,7 @@
                         (row > 0 && grid[row - 1][col]) ||
                         (row < 11 && grid[row + 1][col]) ||
                         (col > 0 && grid[row][col - 1]) ||
-                        (row < 11 && grid[row][col + 1])
+                        (col < 11 && grid[row][col + 1])
                     ) {
                         candidates.push([row, col]);
                     }
@@ -31,7 +31,7 @@
 
             var cCount = random(candidates.length);
             for (var j = 0; j < cCount; j++) {
-                grid[candidates[j][0]][[candidates[j][1]]] = 1;
+                grid[candidates[j][0]][candidates[j][1]] = 1;
             }
         }
 
