@@ -1,5 +1,6 @@
 #include "sim.c"
 #include "lib.c"
+#include "fluo_types.h"
 #include "scenes.c"
 #include "program.c"
 

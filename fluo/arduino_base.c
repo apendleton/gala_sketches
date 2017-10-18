@@ -1,4 +1,5 @@
 #include <ShiftRegister74HC595.h>
+#include "fluo_types.h"
 
 // create shift register object (number of shift registers, data pin, clock pin, latch pin)
 ShiftRegister74HC595 sr[5] = {
@@ -60,7 +61,7 @@ void setAll(bool state) {
 
 void setAllHigh() {
     for (int i = 0; i < 5; i++) {
-        sr[i].setHigh(); // set all pins LOW
+        sr[i].setAllHigh(); // set all pins LOW
     }
 }
 

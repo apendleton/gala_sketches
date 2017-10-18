@@ -187,29 +187,24 @@ void drops(uint16_t duration) {
     }
 }
 
-typedef struct {
-    int8_t x;
-    int8_t y;
-} pt;
-
-pt switchToOctantZeroFrom(uint8_t octant, int8_t x, int8_t y) {
-    pt out;
+orderedPair switchToOctantZeroFrom(uint8_t octant, int8_t x, int8_t y) {
+    orderedPair out;
     switch(octant) {
-        case 0: out = (pt){x, y}; break;
-        case 1: out = (pt){y, x}; break;
-        case 6: out = (pt){-y, x}; break;
-        case 7: out = (pt){x, -y}; break;
+        case 0: out = (orderedPair){x, y}; break;
+        case 1: out = (orderedPair){y, x}; break;
+        case 6: out = (orderedPair){-y, x}; break;
+        case 7: out = (orderedPair){x, -y}; break;
     }
     return out;
 }
 
-pt switchFromOctantZeroTo(uint8_t octant, int8_t x, int8_t y) {
-    pt out;
+orderedPair switchFromOctantZeroTo(uint8_t octant, int8_t x, int8_t y) {
+    orderedPair out;
     switch(octant) {
-        case 0: out = (pt){x, y}; break;
-        case 1: out = (pt){y, x}; break;
-        case 6: out = (pt){y, -x}; break;
-        case 7: out = (pt){x, -y}; break;
+        case 0: out = (orderedPair){x, y}; break;
+        case 1: out = (orderedPair){y, x}; break;
+        case 6: out = (orderedPair){y, -x}; break;
+        case 7: out = (orderedPair){x, -y}; break;
     }
     return out;
 }
@@ -236,11 +231,11 @@ void plotLine(int8_t _x0, int8_t _y0, int8_t _x1, int8_t _y1, int8_t state) {
         else octant = 7;
     }
 
-    pt coords0 = switchToOctantZeroFrom(octant, _x0, _y0);
+    orderedPair coords0 = switchToOctantZeroFrom(octant, _x0, _y0);
     int8_t x0 = coords0.x;
     int8_t y0 = coords0.y;
 
-    pt coords1 = switchToOctantZeroFrom(octant, _x1, _y1);
+    orderedPair coords1 = switchToOctantZeroFrom(octant, _x1, _y1);
     int8_t x1 = coords1.x;
     int8_t y1 = coords1.y;
 
@@ -250,7 +245,7 @@ void plotLine(int8_t _x0, int8_t _y0, int8_t _x1, int8_t _y1, int8_t state) {
     int8_t y = y0;
 
     for (int8_t x = x0; (x0 <= x1 ? x <= x1 : x >= x1); x += (x0 > x1 ? -1 : 1)) {
-        pt rc = switchFromOctantZeroTo(octant, x, y);
+        orderedPair rc = switchFromOctantZeroTo(octant, x, y);
         if (rc.x >= 0 && rc.x < 12 && rc.y >= 0 && rc.y < 12) setLight(rc.x, rc.y, state);
         if (D > 0) {
             y = y + 1;
