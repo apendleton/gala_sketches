@@ -70,3 +70,6 @@ def setAllLow():
 
 def setAllHigh():
     setAll(0)
+
+def render():
+    pass

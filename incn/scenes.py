@@ -21,6 +21,7 @@ def scan(duration):
                 curCol = (rows[row] + col + current) % 12
                 level = col / 4.0
                 setLevel(row, curCol, level)
+        render()
 
         current = (current + 1) % 12
 
@@ -56,6 +57,7 @@ def threedeesin(duration):
                 if (level > 1):
                     level = 1
                 setLevel(row, col, level)
+        render()
 
         current = (current + 1) % 8
         if current == 0:
@@ -102,6 +104,7 @@ def spotlight(duration):
                 _current = current if direction == 1 else 11 - current
                 level = 1 - dist(_current, _current, row, col)
                 setLevel(row, col, level)
+        render()
 
         current = (current + 1) % 12
         if current == 0:
@@ -155,6 +158,7 @@ def meander(duration):
             for c in range(12):
                 level = dist(r, c, row, col)
                 setLevel(r, c, level)
+        render()
 
         delay(200)
 
@@ -228,6 +232,7 @@ def splotch(duration):
         for row in range(12):
             for col in range(12):
                 setLevel(row, col, current * bgrid[row][col])
+        render()
 
         current -= .025
 
@@ -261,6 +266,7 @@ def bars(duration):
             for row in range(6):
                 for i in range(12):
                     setLevel(row * 2, i, level * (8 - row)/8)
+            render()
 
         elif current >= 600:
             current = 61

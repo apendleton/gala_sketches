@@ -1,4 +1,5 @@
-from fake_lib import *
+#from fake_lib import *
+from real_lib import *
 
 import random as rnd
 
