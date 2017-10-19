@@ -63,3 +63,7 @@ void drawBox() {
     }
     printf("\u2518\n");
 }
+
+#include <time.h>
+
+#define millis() time(NULL)*1000

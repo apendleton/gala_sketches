@@ -1,14 +1,13 @@
-#include <time.h>
-
-void bars(uint16_t duration) {
-    time_t t = time(NULL);
+void bars(uint16_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
 
     setAllLow();
 
     uint8_t current = 0;
 
     while (true) {
-        if (time(NULL) - t > duration) return;
+        if (millis() - t > duration) return;
 
         if (current < 6) {
             for (uint8_t i = 0; i < 12; i++) {
@@ -24,8 +23,9 @@ void bars(uint16_t duration) {
     }
 }
 
-void snake(uint16_t duration) {
-    time_t t = time(NULL);
+void snake(uint16_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
 
     setAllLow();
 
@@ -46,7 +46,7 @@ void snake(uint16_t duration) {
     uint8_t nextCols[4];
     uint8_t count = 0;
     while (true) {
-        if (time(NULL) - t > duration) return;
+        if (millis() - t > duration) return;
 
         count = 0;
 
@@ -97,8 +97,9 @@ void snake(uint16_t duration) {
     }
 }
 
-void randomFade(uint16_t duration, uint16_t topHold) {
-    time_t t = time(NULL);
+void randomFade(uint16_t _duration, uint16_t topHold) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
 
     setAllLow();
 
@@ -108,7 +109,7 @@ void randomFade(uint16_t duration, uint16_t topHold) {
     uint8_t current = 0;
     uint8_t direction = LOW;
     while (true) {
-        if (time(NULL) - t > duration) return;
+        if (millis() - t > duration) return;
 
         if (current == 0) {
             if (direction) delay(topHold*1000);
@@ -121,12 +122,13 @@ void randomFade(uint16_t duration, uint16_t topHold) {
 
         current = (current + 1) % 144;
 
-        delay(100);
+        delay(400);
     }
 }
 
-void drops(uint16_t duration) {
-    time_t t = time(NULL);
+void drops(uint16_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
 
     setAllLow();
 
@@ -145,7 +147,7 @@ void drops(uint16_t duration) {
     int8_t direction = 1;
 
     while (true) {
-        if (time(NULL) - t > duration) return;
+        if (millis() - t > duration) return;
 
         if (currentHeight == target) {
             if (currentCol != -1) {
@@ -255,8 +257,9 @@ void plotLine(int8_t _x0, int8_t _y0, int8_t _x1, int8_t _y1, int8_t state) {
     }
 }
 
-void spokes(uint16_t duration, uint8_t invert) {
-    time_t t = time(NULL);
+void spokes(uint16_t _duration, uint8_t invert) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
 
     int8_t state = invert ? LOW : HIGH;
     setAll(!state);
@@ -264,7 +267,7 @@ void spokes(uint16_t duration, uint8_t invert) {
     int8_t i = 0;
     int8_t entries[] = {0, 8, 16};
     while (true) {
-        if (time(NULL) - t > duration) return;
+        if (millis() - t > duration) return;
 
         setAll(!state);
         for (int8_t j = 0; j < 3; j++) {
