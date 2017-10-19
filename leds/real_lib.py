@@ -1,4 +1,5 @@
 from neopixel import *
+import math
 
 # 0: panel 9
 # 1: panel 10, 11, 12
@@ -73,7 +74,6 @@ def setRing(row, col, color):
 
     for i in range(12):
         strip.setPixelColor(start + i, _color)
-    strip.show()
 
 def setRingQ(row, col, q, color):
     strip, start = getRingStart(row, col)
@@ -81,15 +81,14 @@ def setRingQ(row, col, q, color):
 
     for i in range(3 * q, 3 * (q + 1)):
         strip.setPixelColor(start + i, _color)
-    strip.show()
 
 qs = [[3,0],[1,2]]
 def setRingGlobalQ(rowq, colq, color):
-    rq = rowq % 2;
-    row = math.floor(rowq/2);
-    cq = colq % 2;
-    col = math.floor(colq/2);
-    q = qs[rq][cq];
+    rq = rowq % 2
+    row = int(math.floor(rowq/2.0))
+    cq = colq % 2
+    col = int(math.floor(colq/2.0))
+    q = qs[rq][cq]
 
     setRingQ(row, col, q, color)
 
@@ -98,9 +97,8 @@ def setRingL(row, col, l, color):
     _color = Color(*color)
 
     strip.setPixelColor(start + l, _color)
-    strip.show()
 
-def setAllRings(row, col, color):
+def setAllRings(color):
     _color = Color(*color)
 
     for strip in strips:
@@ -114,6 +112,10 @@ def setAllRingsLow():
 def setAllRingsHigh():
     setAllRings((255,255,255))
 
+def render():
+    for strip in strips:
+        strip.show()
+
 strips = []
 def run(func):
 	# Create NeoPixel object with appropriate configuration.
@@ -124,7 +126,7 @@ def run(func):
     ]
 
     # Intialize the library (must be called once before other functions).
-	for strip in strips:
+    for strip in strips:
         strip.begin()
 
     func()

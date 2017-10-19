@@ -68,10 +68,13 @@ def setRingQ(row, col, q, color):
 
 qs = [[3,0],[1,2]]
 def setRingGlobalQ(rowq, colq, color):
-    rq = rowq % 2;
-    row = math.floor(rowq/2);
-    cq = colq % 2;
-    col = math.floor(colq/2);
-    q = qs[rq][cq];
+    rq = rowq % 2
+    row = int(math.floor(rowq/2.0))
+    cq = colq % 2
+    col = int(math.floor(colq/2.0))
+    q = qs[rq][cq]
 
     setRingQ(row, col, q, color)
+
+def render():
+    pass

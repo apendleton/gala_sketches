@@ -6,6 +6,7 @@ def program():
     heart_clip = json.load(open("heart.json"))
 
     while True:
+        sequence(60)
         spinner(10)
         grapevine(15)
         vid(15, heart_clip, 100)

@@ -43,14 +43,14 @@ def rainbow(duration):
         for light in range(12):
             rRow = (6 * row) + rowMap[light]
             f = fade[rRow]
-            base = math.floor(f)
+            base = int(math.floor(f))
             step = f - base
             if step == 0:
                 color = colors[base]
             else:
                 color = [None] * 3
                 for p in range(3):
-                    color[p] = math.floor((step * colors[base + 1][p]) + ((1 - step) * colors[base][p]))
+                    color[p] = int(math.floor((step * colors[base + 1][p]) + ((1 - step) * colors[base][p])))
 
 
             for col in range(12):
@@ -64,12 +64,12 @@ def rainbow(duration):
             return
 
         if current < 60:
-            level = (current + 1) / 60
+            level = (current + 1) / 60.0
             for row in range(12):
                 for col in range(12):
                     for i in range(12):
                         color = px[144*row + 12*col + i]
-                        setRingL(row, col, i, [math.floor(level*color[0]), math.floor(level*color[1]), math.floor(level*color[2])])
+                        setRingL(row, col, i, [int(math.floor(level*color[0])), int(math.floor(level*color[1])), int(math.floor(level*color[2]))])
 
 
 
@@ -78,6 +78,7 @@ def rainbow(duration):
 
         current += 1
 
+        render()
         delay(100)
 
 def spinner(duration):
@@ -98,6 +99,7 @@ def spinner(duration):
 
         current = (current + 1) % 12
 
+        render()
         delay(100)
 
 def vid(duration, frames, ifr=100):
@@ -117,6 +119,7 @@ def vid(duration, frames, ifr=100):
 
 
         current = (current + 1) % len(frames)
+        render()
         delay(ifr)
 
 def grapevine(duration):
@@ -143,7 +146,7 @@ def grapevine(duration):
             return
 
         dot = current % 6
-        ring = math.floor(current / 6)
+        ring = int(math.floor(current / 6.0))
 
         for col in range(12):
             if col % 2 == 0:
@@ -165,7 +168,7 @@ def grapevine(duration):
                 for i in range(3):
                     lower = min(rightColor[i], leftColor[i])
                     upper = max(rightColor[i], leftColor[i])
-                    color[i] = math.floor((colorSlot/72) * (upper - lower)) + lower
+                    color[i] = int(math.floor((colorSlot/72.0) * (upper - lower)) + lower)
 
                 setRingL(hotRing, col, cycle[hotDot], color)
             else:
@@ -184,4 +187,20 @@ def grapevine(duration):
             leftColor = [random(256), random(256), random(256)]
             rightColor = [random(256), random(256), random(256)]
 
+        render()
         delay(100)
+
+def sequence(duration):
+    t = time.time()
+
+    current = 0
+    while True:
+        setAllRingsLow()
+        for row in range(12):
+            for col in range(12):
+                if time.time() - t > duration:
+                    return
+
+                setRing(row, col, (0,127,255))
+                render()
+                delay(250)
