@@ -1,4 +1,4 @@
-void bars(uint16_t _duration) {
+void bars(uint32_t _duration) {
     unsigned long duration = _duration * 1000;
     unsigned long t = millis();
 
@@ -23,7 +23,7 @@ void bars(uint16_t _duration) {
     }
 }
 
-void snake(uint16_t _duration) {
+void snake(uint32_t _duration) {
     unsigned long duration = _duration * 1000;
     unsigned long t = millis();
 
@@ -97,7 +97,7 @@ void snake(uint16_t _duration) {
     }
 }
 
-void randomFade(uint16_t _duration, uint16_t topHold) {
+void randomFade(uint32_t _duration, uint16_t topHold) {
     unsigned long duration = _duration * 1000;
     unsigned long t = millis();
 
@@ -126,7 +126,7 @@ void randomFade(uint16_t _duration, uint16_t topHold) {
     }
 }
 
-void drops(uint16_t _duration) {
+void drops(uint32_t _duration) {
     unsigned long duration = _duration * 1000;
     unsigned long t = millis();
 
@@ -257,7 +257,7 @@ void plotLine(int8_t _x0, int8_t _y0, int8_t _x1, int8_t _y1, int8_t state) {
     }
 }
 
-void spokes(uint16_t _duration, uint8_t invert) {
+void spokes(uint32_t _duration, uint8_t invert) {
     unsigned long duration = _duration * 1000;
     unsigned long t = millis();
 
