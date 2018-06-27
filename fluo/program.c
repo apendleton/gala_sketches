@@ -1,8 +1,10 @@
 void loop() {
-    bars(15);
-    snake(15);
-    randomFade(180,3);
-    drops(60);
-    spokes(10, false);
-    spokes(10, true);
+    bars(30);
+    snake(30);
+    bars(30);
+    drops(50);
+    bars(30);
+    randomFade(30,2);
+    bars(30);
+    spokes(15, true);
 }

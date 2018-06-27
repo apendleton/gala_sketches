@@ -122,7 +122,7 @@ void randomFade(uint32_t _duration, uint16_t topHold) {
 
         current = (current + 1) % 144;
 
-        delay(400);
+        delay(100);
     }
 }
 
