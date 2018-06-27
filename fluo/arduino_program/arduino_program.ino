@@ -97,22 +97,16 @@ void bars(uint32_t _duration) {
 
     setAllLow();
 
-    uint8_t current = 0;
+    for (uint8_t row = 0; row < 12; row+=2) {
+        for (uint8_t i = 0; i < 12; i++) {
+            setLight(row, i, HIGH);
+        }
+        delay(2000);
+    }
 
     while (true) {
         if (millis() - t > duration) return;
-
-        if (current < 6) {
-            for (uint8_t i = 0; i < 12; i++) {
-                setLight(current * 2, i, HIGH);
-            }
-        } else if (current >= 60) {
-            current = 7;
-        }
-
-        current += 1;
-
-        delay(2000);
+        delay(100);
     }
 }
 
