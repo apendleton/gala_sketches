@@ -72,7 +72,6 @@ void setAllLow() {
 
 void setup() {
     setAllLow();
-    sr[4].set(0, HIGH);
 }
 
 void shuffle (uint8_t* array, int arrayLength) {
