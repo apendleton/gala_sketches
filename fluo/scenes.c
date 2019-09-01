@@ -17,6 +17,81 @@ void bars(uint32_t _duration) {
     }
 }
 
+void bars_sides(uint32_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
+
+    setAllLow();
+
+    for (uint8_t col = 0; col < 12; col++) {
+        for (uint8_t row = 0; row < 12; row+=2) {
+            uint8_t actual_col = (row % 4 == 0) ? col : (11 - col);
+            setLight(row, actual_col, HIGH);
+        }
+        delay(1000);
+    }
+
+    while (true) {
+        if (millis() - t > duration) return;
+        delay(100);
+    }
+}
+
+void bars_diag(uint32_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
+
+    setAllLow();
+
+    for (int8_t first_col = 0; first_col < 12; first_col++) {
+        for (uint8_t row = 0; row < 12; row+=2) {
+            int8_t col = first_col - row;
+            if (col >= 0 && col <= 11) {
+                setLight(row, (uint8_t)col, HIGH);
+            }
+            int8_t a_col = 21 - (first_col + row);
+            if (a_col >= 0 && a_col <= 11) {
+                setLight(row, (uint8_t)a_col, HIGH);
+            }
+        }
+        delay(1000);
+    }
+
+    while (true) {
+        if (millis() - t > duration) return;
+        delay(100);
+    }
+}
+
+void bars_crosswalk(uint32_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
+
+    for (int8_t front_col = 0; front_col < 12; front_col++) {
+        setAllLow();
+        for (int8_t row = 0; row < 12; row+=2) {
+            for (int8_t col = front_col; col >= 0; col -= 2) {
+                setLight(row, col, HIGH);
+            }
+        }
+        delay(250);
+    }
+    for (int8_t front_row = 11; front_row >= 0; front_row--) {
+        for (int8_t col = 0; col < 12; col+=2) {
+            for (int8_t row = front_row; row < 12; row += 2) {
+                if (row < 11) setLight(row + 1, col, LOW);
+                setLight(row, col, HIGH);
+            }
+        }
+        delay(250);
+    }
+
+    while (true) {
+        if (millis() - t > duration) return;
+        delay(100);
+    }
+}
+
 void snake(uint32_t _duration) {
     unsigned long duration = _duration * 1000;
     unsigned long t = millis();
@@ -279,6 +354,30 @@ void spokes(uint32_t _duration, uint8_t invert) {
 
         i = (i + 1) % 23;
 
+        delay(100);
+    }
+}
+
+void bars_sweep(uint32_t _duration) {
+    unsigned long duration = _duration * 1000;
+    unsigned long t = millis();
+
+    setAllLow();
+
+    for (int8_t row = 0; row < 12; row+=2) {
+        for (int8_t low_row = 11; low_row >= row; low_row--) {
+            for (uint8_t dark_row = row + 1; dark_row < 12; dark_row++) {
+                for (uint8_t col = 0; col < 12; col++) {
+                    setLight(dark_row, col, LOW);
+                }
+            }
+            plotLine(row, 0, low_row, 11, HIGH);
+            delay(150);
+        }
+    }
+
+    while (true) {
+        if (millis() - t > duration) return;
         delay(100);
     }
 }
