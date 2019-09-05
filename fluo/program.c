@@ -1,15 +1,16 @@
 void loop() {
-    bars(25);
     drops(50);
 
-    bars(30);
+    bars_sweep(30);
     randomFade(30,2);
 
-    bars(30);
+    bars_sides(30);
     spokes(15, true);
 
-    bars(30);
+    bars_diag(30);
     snake(30);
+
+    bars_crosswalk(25);
 
     setAllLow();
     delay(30 * 1000);
